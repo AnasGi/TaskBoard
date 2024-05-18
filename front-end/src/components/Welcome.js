@@ -11,7 +11,7 @@ export default function Welcome() {
 
   const pros = [
     {
-      title: "Simple layout",
+      title: "Simple layoute",
       text: "Show only tasks assigned to you, or items marked as urgent. Break down any project in the way that’s most helpful to you.",
     },
     {
