@@ -6,6 +6,7 @@ import { ReactComponent as Fb } from "../Assets/facebook.svg";
 import { ReactComponent as Insta } from "../Assets/instagram.svg";
 import { ReactComponent as In } from "../Assets/linkedin.svg";
 import { ReactComponent as Smile } from "../Assets/smile.svg";
+import ContactUs from "./ContactUs";
 
 export default function Welcome() {
 
@@ -16,20 +17,21 @@ export default function Welcome() {
     },
     {
       title: "All-in-One package",
-      text: "Show only tasks assigned to you, or items marked as urgent. Break down any project in the way that’s most helpful to you.",
+      text: "Find all necessary tools you need to organize your tasks efficiently. From task categorization to deadline management, we've got you covered.",
     },
     {
       title: "Statistics",
-      text: "Show only tasks assigned to you, or items marked as urgent. Break down any project in the way that’s most helpful to you.",
-    },
+      text: "Gain a holistic view of your tasks with detailed statistics and progress tracking.",
+    }
   ];
 
   let [index, setIndex] = useState(0);
+  const [ShowContactForm, setShowContactForm] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setIndex((prevIndex) => (prevIndex < 2 ? prevIndex + 1 : 0));
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);
@@ -54,11 +56,17 @@ export default function Welcome() {
                 <a className="nav-link fw-bold" href="#about">
                   About
                 </a>
-                <a className="nav-link fw-bold" href="/contact-us">
+                <a className="nav-link fw-bold" href="#team">
+                  Team
+                </a>
+                <a className="nav-link fw-bold" href="#contact-us" onClick={()=>setShowContactForm(p=>!p)}>
                   Contact us
                 </a>
               </div>
             </div>
+            {
+              ShowContactForm && <ContactUs/>
+            }
             <div className="d-flex gap-2 align-items-center">
               <span className="text-body-secondary">
                 Log in or create a new account

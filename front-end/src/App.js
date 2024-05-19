@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Board nav="tasks" />} />
           <Route path="/statistics/:userId" element={<Board nav="stats" />} />
+          <Route path="/notes/:userId" element={<Board nav="notes" />} />
         </Routes>
       </div>
     );

@@ -13,10 +13,6 @@ div{
   scrollbar-width: thin;
 }
 
-body{
-  background-color: rgb(51, 51, 51);
-}
-
 /* welcome.js */
 .navbar-brand img{
   width: 30px;
@@ -71,6 +67,16 @@ body{
   filter: drop-shadow(2px 2px 2px rgb(209, 209, 209));
 }
 
+.contactFormWrapper{
+  position: absolute;
+  top: 100%;
+  width: 30%;
+  z-index: 100;
+  background-color: #f8f8f8;
+  animation: fade .2s linear;
+  padding: 10px 12px;
+}
+
 
 /* Category.js */
 
@@ -105,11 +111,7 @@ body{
 
 /* AddTask.js */
 .addTaskForm{
-  animation: fade .1s linear;
-  position: absolute;
-  top: 45%;
-  right: 8%;
-  z-index: 10;
+  animation: fade .3s linear;
 }
 
 /* Tasks.js */
@@ -126,7 +128,11 @@ body{
 }
 
 
+/* stats.js */
 
+.CircularProgressbarContainer{
+  width: 170px;
+}
 
 
 /* clerk */

@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import GetFiltredData from "./GetFiltredData";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Tasks() {
   const clickedCateg = useSelector((data) => data.categ);
@@ -106,7 +107,7 @@ export default function Tasks() {
   if (allTasks !== "load") {
 
     return (
-      <div style={{ width: "75%"}}>
+      <div style={{ width: "75%" , height:"100vh", padding:"10px 0px"}}>
         <Toaster position="top-center" reverseOrder={false} />
         <div>
           <Category />
@@ -134,7 +135,7 @@ export default function Tasks() {
           </div>
         </div>
         {ShowAddTaskForm && <AddTasks />}
-        <div className="overflow-y-scroll mt-2 " style={{maxHeight:"500px"}}>
+        <div className="overflow-y-scroll mt-2 " style={{ maxHeight:"77%"}}>
           {Tasks.length !== 0
             ? Tasks.map((task, i) => (
                 <div key={i} className="p-2 border border-2 rounded" style={{margin:"7px 5px 7px 0px"}} onMouseLeave={()=>setStartEdit(false)}>
@@ -155,7 +156,7 @@ export default function Tasks() {
                         </div>
                         : 
                         <div>
-                          <span className="fw-bold">{task.description}</span>
+                          <span className={`fw-bold ${task.isDone && 'text-decoration-line-through text-body-secondary'}`}>{task.description}</span>
                           <Checkbox
                             onClick={e=>handleChangeTaskImportant(e,task._id)}
                             checked={task.isImportant}
@@ -215,16 +216,16 @@ export default function Tasks() {
               )}
 
         </div>
-          <Fab size="medium" color="secondary" aria-label="add" className="AddTaskIcon" style={{position:"absolute"}}>
-            {ShowAddTaskForm ? <CloseIcon onClick={() => setShowAddTaskForm((prev) => !prev)}/> : <AddIcon onClick={() => setShowAddTaskForm((prev) => !prev)} />}
+          <Fab size="medium" color="secondary" aria-label="add" className="AddTaskIcon" style={{position:"absolute"}} onClick={() => setShowAddTaskForm((prev) => !prev)}>
+            {ShowAddTaskForm ? <CloseIcon /> : <AddIcon />}
           </Fab>
         
       </div>
     );
   } else {
     return (
-      <div className="d-flex justify-content-center align-items-center w-65">
-        <div className="loader"></div>
+      <div className="d-flex justify-content-center align-items-center" style={{width:"75%"}}>
+        <CircularProgress />
       </div>
     );
   }
