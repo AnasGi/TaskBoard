@@ -7,8 +7,8 @@ html{
   scroll-behavior: smooth;
   scroll-padding-top: 20px;
   scrollbar-width: thin;
-  transition: .3s;
 }
+
 div{
   scrollbar-width: thin;
 }
@@ -110,9 +110,7 @@ div{
 }
 
 /* AddTask.js */
-.addTaskForm{
-  animation: fade .3s linear;
-}
+
 
 /* Tasks.js */
 
@@ -125,6 +123,12 @@ div{
 .AddTaskIcon{
   bottom: 10%;
   right: 7%;
+}
+
+.taskContent {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 

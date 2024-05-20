@@ -5,12 +5,16 @@ export default function GetFiltredData(allData , userId , clickedCateg , FilterB
 
   if(allData !== 'load'){
 
-      if (clickedCateg === "all") {
-        Data = allData.filter((data) => data.userId === userId);
-      } else {
-        Data = allData.filter(
-          (data) => data.userId === userId && data.nameCategory === clickedCateg
-        );
+      Data = allData.filter((data) => data.userId === userId);
+
+      if(clickedCateg){
+        if (clickedCateg === "all") {
+          Data = allData.filter((data) => data.userId === userId);
+        } else {
+          Data = allData.filter(
+            (data) => data.userId === userId && data.nameCategory === clickedCateg
+          );
+        }
       }
     
       if (FilterByEmergency) {
@@ -25,7 +29,7 @@ export default function GetFiltredData(allData , userId , clickedCateg , FilterB
         FiltredData = Data.filter((data) => data.isDone === false);
         Data = FiltredData;
       }
-      if (FilterByDate !== "") {
+      if (FilterByDate) {
         FiltredData = Data.filter(
           (data) =>
             new Date(data.createdAt).getFullYear() ===

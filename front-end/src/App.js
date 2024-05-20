@@ -6,6 +6,7 @@ import Welcome from "./components/Welcome";
 import Board from "./components/Board";
 import { useAuth } from "@clerk/clerk-react";
 
+
 function App() {
   const { isSignedIn } = useAuth();
 

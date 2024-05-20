@@ -1,43 +1,59 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
-import { useAuth } from "@clerk/clerk-react";
 import GetNotes from "../hooks/GetNotes";
 import CircularProgress from "@mui/material/CircularProgress";
 import "../styles/Note.css";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import { useDispatch, useSelector } from "react-redux";
+import AddNotes from "./AddNotes";
+import React, { useState } from "react";
+import { useAuth } from "@clerk/clerk-react";
+import Backdrop from "@mui/material/Backdrop";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import SortIcon from "@mui/icons-material/Sort";
+import GetFiltredData from "./GetFiltredData";
+
 export default function Notes() {
-  const { userId } = useAuth();
-  const [newNote, setNewNote] = useState("");
-  const [newTitle, setNewTitle] = useState("");
-
+  const dispatch = useDispatch();
+  const ShowAddTaskForm = useSelector((d) => d.showNoteForm);
   const allnotes = GetNotes();
+  const { userId } = useAuth();
 
-  const handleAddNote = async (e) => {
-    e.preventDefault();
-    if (newNote.trim() === "" || newTitle.trim() === "") return;
-
-    try {
-      await axios.post("http://localhost:8000/api/notes", {
-        title: newTitle,
-        content: newNote,
-        userId: userId,
-      });
-      Swal.fire({
-        icon: "success",
-        title: "Note Added",
-        text: "Your note has been added successfully!",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => window.location.reload());
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Failed to add note. Please try again later.",
-        showCancelButton: true,
-      });
-    }
+  let options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
   };
+
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  //filter
+  const [FilterByDate, setFilterByDate] = useState("");
+  //sort
+  const [sortByDate, setsortByDate] = useState(false);
+  const [sortAtoZ, setsortAtoZ] = useState(false);
+  const [IsSorted, setIsSorted] = useState({ bydate: false, az: false });
+
+  const UserNotes = GetFiltredData(
+    allnotes,
+    userId,
+    undefined,
+    undefined,
+    FilterByDate,
+    undefined,
+    undefined
+  );
+
+  //Sort
+  if (sortByDate) {
+    UserNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+  if (sortAtoZ) {
+    UserNotes.sort((a, b) => a.content.localeCompare(b.content));
+  }
 
   if (allnotes === "load") {
     return (
@@ -55,57 +71,127 @@ export default function Notes() {
           width: "75%",
           height: "100vh",
           overflowY: "auto",
-          padding: "3px",
         }}
       >
-        <h1>Notes</h1>
-        <form className="w-50" onSubmit={handleAddNote}>
-          <div className="form-floating mb-3">
+        <div className="m-4">
+          <div className="d-flex align-items-center gap-3 mt-2">
+            <FilterAltIcon />
             <input
-              type="text"
-              id="newTitle"
-              className="form-control"
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="Enter a new note title"
-              required
+              type="date"
+              className="rounded p-2 pb-0 pt-0"
+              onChange={(e) => setFilterByDate(e.target.value)}
             />
-            <label htmlFor="newTitle">Title</label>
           </div>
-          <div className="form-floating mb-3">
-            <textarea
-              id="newNote"
-              className="form-control"
-              value={newNote}
-              onChange={(e) => setNewNote(e.target.value)}
-              placeholder="Enter a new note"
-              required
-            />
-            <label htmlFor="newNote">Description</label>
+          <div className="d-flex align-items-center gap-3 mt-2">
+            <SortIcon />
+            <div
+              className={`btn fw-bold p-2 pt-1 pb-1 ${
+                IsSorted.bydate ? "btn-primary" : "btn-outline-primary"
+              }`}
+              style={{ fontSize: "12px" }}
+              onClick={() => {
+                setsortByDate((p) => !p);
+                setIsSorted((p) => ({ ...p, bydate: !p.bydate }));
+              }}
+            >
+              sort by date
+            </div>
+            <div
+              className={`btn fw-bold p-2 pt-1 pb-1 ${
+                IsSorted.az ? "btn-primary" : "btn-outline-primary"
+              }`}
+              style={{ fontSize: "12px" }}
+              onClick={() => {
+                setsortAtoZ((p) => !p);
+                setIsSorted((p) => ({ ...p, az: !p.az }));
+              }}
+            >
+              A-Z
+            </div>
           </div>
-          <button type="submit" class="btn btn-outline-primary">
-            Add Note
-          </button>
-        </form>
-        <div>
-          {allnotes.length > 0 ? (
+        </div>
+        <div className="">
+          {UserNotes.length > 0 ? (
             <div className="notes">
-              {allnotes.map((note) => (
-                <div className="note  shadow" key={note.id}>
+              {UserNotes.map((note, i) => (
+                <div
+                  className="note shadow"
+                  key={note.id}
+                  style={{ cursor: "zoom-in" }}
+                  onClick={() => {
+                    setIndex(i);
+                    setOpen(true);
+                  }}
+                >
                   <p className="title">{note.title}</p>
                   <span className="content">{note.content}</span>
+                  <span
+                    className="text-body-secondary"
+                    style={{ fontSize: "14px" }}
+                  >
+                    {new Date(note.createdAt).toLocaleString(
+                      "default",
+                      options
+                    )}
+                  </span>
                   <div>
-                    <span className="text-primary">Show More</span>
+                    <span class="material-symbols-outlined text-success">
+                      edit
+                    </span>
                     <span class="material-symbols-outlined text-danger">
                       delete
                     </span>
                   </div>
                 </div>
               ))}
+              {ShowAddTaskForm && <AddNotes />}
+
+              <Backdrop
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+                open={open}
+              >
+                <div className="NoteDetails bg-light p-3 text-dark rounded w-50">
+                  <h1 className="fw-bold">{UserNotes[index].title}</h1>
+                  <p style={{fontSize:"18px"}}>{UserNotes[index].content}</p>
+                  <p className="text-body-secondary" style={{fontSize:"15px"}} >
+                    {new Date(UserNotes[index].createdAt).toLocaleString(
+                      "default",
+                      options
+                    )}
+                  </p>
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                    className="btn btn-outline-dark"
+                  >
+                    Close
+                  </button>
+                </div>
+              </Backdrop>
             </div>
           ) : (
-            <p>No notes available.</p>
+            <div
+              className="d-flex justify-content-center align-items-center"
+              style={{ height: "80vh" }}
+            >
+              <p className="text-body-secondary">No notes available.</p>
+            </div>
           )}
+          <Fab
+            size="medium"
+            color="secondary"
+            aria-label="add"
+            className="AddTaskIcon"
+            style={{ position: "absolute" }}
+            onClick={() => dispatch({ type: "showNoteForm" })}
+          >
+            <AddIcon />
+          </Fab>
         </div>
       </div>
     );

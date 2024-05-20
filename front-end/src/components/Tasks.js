@@ -1,5 +1,5 @@
 import { useAuth } from "@clerk/clerk-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GetTasks from "../hooks/GetTasks";
 import { useState } from "react";
 import AddTasks from "./AddTasks";
@@ -13,7 +13,6 @@ import AddIcon from '@mui/icons-material/Add';
 import { pink } from '@mui/material/colors';
 import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined';
 import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
-import CloseIcon from '@mui/icons-material/Close';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import GetFiltredData from "./GetFiltredData";
@@ -26,7 +25,19 @@ export default function Tasks() {
 
   const allTasks = GetTasks();
 
-  const [ShowAddTaskForm, setShowAddTaskForm] = useState(false);
+  let options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  };
+
+  const dispatch = useDispatch()
+  const ShowAddTaskForm = useSelector(d=>d.showTaskForm)
+
+  // const [ShowAddTaskForm, setShowAddTaskForm] = useState(false);
   const [showEditBtn, setShowEditBtn] = useState(false);
   const [StartEdit, setStartEdit] = useState(false);
   const [captureI, setCaptureI] = useState();
@@ -134,7 +145,7 @@ export default function Tasks() {
             A-Z
           </div>
         </div>
-        {ShowAddTaskForm && <AddTasks />}
+        {ShowAddTaskForm && <AddTasks/>}
         <div className="overflow-y-scroll mt-2 " style={{ maxHeight:"77%"}}>
           {Tasks.length !== 0
             ? Tasks.map((task, i) => (
@@ -155,8 +166,8 @@ export default function Tasks() {
                           </div>
                         </div>
                         : 
-                        <div>
-                          <span className={`fw-bold ${task.isDone && 'text-decoration-line-through text-body-secondary'}`}>{task.description}</span>
+                        <div className="d-flex align-items-center" style={{width:'80%'}}>
+                          <span className={`taskContent fw-bold ${task.isDone && 'text-decoration-line-through text-body-secondary'}`}>{task.description}</span>
                           <Checkbox
                             onClick={e=>handleChangeTaskImportant(e,task._id)}
                             checked={task.isImportant}
@@ -190,16 +201,8 @@ export default function Tasks() {
                         <span className="btn btn-danger fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px"}}>Important</span> 
                       }
                     </div>
-                    <div className="d-flex gap-2 text-body-secondary" style={{fontSize:"14px" , width:"10%"}}>
-                      <div>
-                        <span>{new Date(task.createdAt).getFullYear()}</span>/
-                        <span>{new Date(task.createdAt).getMonth()+1}</span>/
-                        <span>{new Date(task.createdAt).getDate()}</span>
-                      </div>
-                      <div>
-                        <span>{new Date(task.createdAt).getHours()}</span>:
-                        <span>{new Date(task.createdAt).getMinutes()<10 ? '0'+new Date(task.createdAt).getMinutes() : new Date(task.createdAt).getMinutes()}</span>
-                      </div>
+                    <div className="d-flex gap-2 text-body-secondary" style={{fontSize:"14px" , width:"15%"}}>
+                      <span>{new Date(task.createdAt).toLocaleString('default' , options)}</span>
                     </div>
                     <div className="actionButtons">
                       <i className="btn btn-outline-danger p-2 border-0 bi bi-trash3-fill" onClick={e=>handleDeleteTask(e , task._id)}></i>
@@ -216,8 +219,8 @@ export default function Tasks() {
               )}
 
         </div>
-          <Fab size="medium" color="secondary" aria-label="add" className="AddTaskIcon" style={{position:"absolute"}} onClick={() => setShowAddTaskForm((prev) => !prev)}>
-            {ShowAddTaskForm ? <CloseIcon /> : <AddIcon />}
+          <Fab size="medium" color="secondary" aria-label="add" className="AddTaskIcon" style={{position:"absolute"}} onClick={() => dispatch({type : 'showTaskForm'})}>
+            <AddIcon />
           </Fab>
         
       </div>
