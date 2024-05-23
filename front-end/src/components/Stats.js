@@ -95,7 +95,7 @@ export default function Stats() {
 
   if(stats !== 'load' && tasks !== 'load'){
     return (
-      <div className="overflow-y-scroll" style={{ width:"75%" , height:"100vh"}}>
+      <div className="overflow-y-scroll" style={{ width:"90%" , height:"100vh"}}>
         {stats.length > 0 ? (
           <div>
             
@@ -265,7 +265,7 @@ export default function Stats() {
     );
   }
   else{
-    return <div className="d-flex justify-content-center align-items-center" style={{width:"75%"}}>
+    return <div className="d-flex justify-content-center align-items-center" style={{width:"90%"}}>
       <CircularProgress />
     </div>
   }

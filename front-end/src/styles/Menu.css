@@ -1,17 +1,53 @@
-.menu {
-  width: 17rem;
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.menu_container{
   height: 100%;
-  /* margin-top: 2.5%; */
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.menu {
+  position: relative;
+  border-radius: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
   align-items: center;
+}
+
+.showMoreMenu{
+  position: absolute;
+  color: black;
+  left: 90%;
+  cursor: pointer;
+  background-color: white;
+  padding: 5px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  border-radius: 100%;
+}
+
+.showMoreMenu:hover{
+  background-color: beige;
 }
 
 .profile {
@@ -34,10 +70,8 @@
   flex-direction: column;
 }
 
-.username,
-.email {
-  margin-bottom: 0;
-  margin-left: 3px;
+.username {
+  width: 100px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -45,34 +79,29 @@
 
 .username {
   text-transform: capitalize;
-  font-weight: bold;
   font-size: 1.1rem;
 }
 
-/* .profile:hover {
-  background-color: #dfdede;
-} */
-
-.links {
+.links , .ExpandedLinks {
   width: 100%;
-  /* background-color: white; */
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.links li {
-  width: 100%;
+
+.links li , .ExpandedLinks li {
   position: relative;
-  padding: 10px;
   margin: 0.5rem 0;
-  color: black;
-  display: grid;
-  grid-template-columns: 40px 1fr;
+  display: flex;
+  gap: 20px;
   cursor: pointer;
   align-items: center;
-  /* border-radius: 5px; */
-  /* background-color: rgb(226, 226, 226); */
+  border-radius: 30px;
+}
+
+.links li>div , .ExpandedLinks li{
+  padding: 10px;
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
@@ -80,49 +109,27 @@
   -o-transition: all 0.3s linear;
 }
 
-.links li::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background-color: #c5c5c5;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
-  border-radius: 15px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
 
-.links li::before {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 0%;
-  height: 100%;
+.links li>div.active , .links li>div:hover {
   background-color: black;
-
-  /* border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px; */
+  color: white;
+  border-radius: 100%;
 }
 
-.links li:hover {
-  background-color: #fff;
+.ExpandedLinks li:has(.active) , .ExpandedLinks li:hover {
+  background-color: black;
+  color: white;
+  border-radius: 30px;
 }
 
-.links li.active {
-  background-color: #fff;
+.themeSwith{
+  background-color: rgb(225, 225, 225);
+  width: 70px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 30px;
 }
 
-.links li.active::before {
-  width: 0.25rem;
-}
-
-.sign-out {
+/* .sign-out {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -149,4 +156,4 @@
 }
 .sign-out button:hover {
   background-color: #dfdede;
-}
+} */

@@ -17,6 +17,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import GetFiltredData from "./GetFiltredData";
 import CircularProgress from '@mui/material/CircularProgress';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Tasks() {
   const clickedCateg = useSelector((data) => data.categ);
@@ -54,9 +55,12 @@ export default function Tasks() {
   const [sortByDate, setsortByDate] = useState(false);
   const [sortAtoZ, setsortAtoZ] = useState(false);
   const [IsSorted, setIsSorted] = useState({bydate : false , az : false });
+
+  //Search state variable
+  const [search , setSearch] = useState('')
   
   //Filter
-  const Tasks = GetFiltredData(allTasks , userId , clickedCateg , FilterByEmergency , FilterByDate , FilterByCompletion , FilterByActive)
+  const Tasks = GetFiltredData(allTasks , userId , clickedCateg , FilterByEmergency , FilterByDate , FilterByCompletion , FilterByActive , search , undefined)
   //Sort
   if(sortByDate){
     Tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -118,7 +122,7 @@ export default function Tasks() {
   if (allTasks !== "load") {
 
     return (
-      <div style={{ width: "75%" , height:"100vh", padding:"10px 0px"}}>
+      <div style={{ width: "90%" , height:"100vh", padding:"10px 0px"}}>
         <Toaster position="top-center" reverseOrder={false} />
         <div>
           <Category />
@@ -145,6 +149,10 @@ export default function Tasks() {
             A-Z
           </div>
         </div>
+        <div className="d-flex align-items-center gap-3 mt-2">
+          <SearchIcon/>
+          <input type="text" className="rounded p-2 pb-0 pt-0" onChange={(e)=>setSearch(e.target.value)}/>
+        </div>
         {ShowAddTaskForm && <AddTasks/>}
         <div className="overflow-y-scroll mt-2 " style={{ maxHeight:"77%"}}>
           {Tasks.length !== 0
@@ -161,8 +169,8 @@ export default function Tasks() {
                           onChange={e=>setDescriptionEdit(e.target.value)}
                           >{DescriptionEdit}</textarea>
                           <div className="d-flex gap-2 ">
-                            <button onClick={()=>handleChangeTaskText(task._id)} className="btn btn-success p-2 pt-1 pb-1">Save</button> 
-                            <button className="btn btn-dark p-2 pt-1 pb-1" onClick={()=>setStartEdit(false)}>Cancel</button>
+                            <button onClick={()=>handleChangeTaskText(task._id)} style={{fontSize:"12px"}} className="btn btn-outline-success p-2 pt-1 pb-1">Save</button> 
+                            <button className="btn btn-outline-dark p-2 pt-1 pb-1" style={{fontSize:"12px"}} onClick={()=>setStartEdit(false)}>Cancel</button>
                           </div>
                         </div>
                         : 
@@ -180,13 +188,15 @@ export default function Tasks() {
                               },
                             }}
                           />
+                          {
+                            showEditBtn && captureI === i && !task.isDone && 
+                            <button 
+                              onClick={()=>{setStartEdit(true) ; setDescriptionEdit(task.description) ; setShowEditBtn(false)}}
+                              className="btn btn-outline-primary fw-bold p-2 pt-1 pb-1 rounded"
+                              style={{fontSize:"12px"}}
+                            >Edit</button>
+                          }
                         </div>
-                      }
-                      {
-                        showEditBtn && captureI === i && !task.isDone && 
-                        <i onClick={()=>{setStartEdit(true) ; setDescriptionEdit(task.description) ; setShowEditBtn(false)}} 
-                        className="btn btn-outline-success border-0 bi bi-pen" 
-                        style={{margin:"0px 5px" , padding:"2px 6px 1px 6px" , borderRadius:"100%"}}></i>
                       }
                     </div>
                     <div className="d-flex gap-2" style={{width:"15%"}}>
@@ -227,7 +237,7 @@ export default function Tasks() {
     );
   } else {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{width:"75%"}}>
+      <div className="d-flex justify-content-center align-items-center" style={{width:"90%"}}>
         <CircularProgress />
       </div>
     );

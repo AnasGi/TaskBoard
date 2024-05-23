@@ -11,6 +11,7 @@ import Backdrop from "@mui/material/Backdrop";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import SortIcon from "@mui/icons-material/Sort";
 import GetFiltredData from "./GetFiltredData";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Notes() {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ export default function Notes() {
   const [sortByDate, setsortByDate] = useState(false);
   const [sortAtoZ, setsortAtoZ] = useState(false);
   const [IsSorted, setIsSorted] = useState({ bydate: false, az: false });
+  //Search state variable
+  const [search, setSearch] = useState("");
 
   const UserNotes = GetFiltredData(
     allnotes,
@@ -44,7 +47,9 @@ export default function Notes() {
     undefined,
     FilterByDate,
     undefined,
-    undefined
+    undefined,
+    undefined,
+    search
   );
 
   //Sort
@@ -59,7 +64,7 @@ export default function Notes() {
     return (
       <div
         className="d-flex justify-content-center align-items-center"
-        style={{ width: "75%" }}
+        style={{ width: "90%" }}
       >
         <CircularProgress />
       </div>
@@ -68,7 +73,7 @@ export default function Notes() {
     return (
       <div
         style={{
-          width: "75%",
+          width: "90%",
           height: "100vh",
           overflowY: "auto",
         }}
@@ -108,6 +113,14 @@ export default function Notes() {
             >
               A-Z
             </div>
+          </div>
+          <div className="d-flex align-items-center gap-3 mt-2">
+            <SearchIcon />
+            <input
+              type="text"
+              className="rounded p-2 pb-0 pt-0"
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </div>
         <div className="">
@@ -156,8 +169,11 @@ export default function Notes() {
               >
                 <div className="NoteDetails bg-light p-3 text-dark rounded w-50">
                   <h1 className="fw-bold">{UserNotes[index].title}</h1>
-                  <p style={{fontSize:"18px"}}>{UserNotes[index].content}</p>
-                  <p className="text-body-secondary" style={{fontSize:"15px"}} >
+                  <p style={{ fontSize: "18px" }}>{UserNotes[index].content}</p>
+                  <p
+                    className="text-body-secondary"
+                    style={{ fontSize: "15px" }}
+                  >
                     {new Date(UserNotes[index].createdAt).toLocaleString(
                       "default",
                       options

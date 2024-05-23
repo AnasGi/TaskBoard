@@ -1,4 +1,4 @@
-export default function GetFiltredData(allData , userId , clickedCateg , FilterByEmergency , FilterByDate , FilterByCompletion , FilterByActive ) {
+export default function GetFiltredData(allData , userId , clickedCateg , FilterByEmergency , FilterByDate , FilterByCompletion , FilterByActive , searchTasks ,searchNotes ) {
 
   let Data;
   let FiltredData;
@@ -38,6 +38,16 @@ export default function GetFiltredData(allData , userId , clickedCateg , FilterB
               new Date(FilterByDate).getMonth() + 1 &&
             new Date(data.createdAt).getDate() === new Date(FilterByDate).getDate()
         );
+        Data = FiltredData;
+      }
+
+      if(searchTasks){
+        FiltredData = Data.filter(data=>new RegExp(searchTasks, 'i').test(data.description))
+        Data = FiltredData;
+      }
+
+      if(searchNotes){
+        FiltredData = Data.filter(data=>new RegExp(searchNotes, 'i').test(data.title))
         Data = FiltredData;
       }
     
