@@ -27,6 +27,7 @@
 .menu {
   position: relative;
   border-radius: 30px;
+  background-color: rgb(243, 243, 243);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -37,9 +38,9 @@
 .showMoreMenu{
   position: absolute;
   color: black;
-  left: 90%;
+  left: 95%;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(244, 244, 244);
   padding: 5px;
   z-index: 1;
   transition: all 0.3s ease-in-out;
@@ -50,7 +51,7 @@
   background-color: beige;
 }
 
-.profile {
+/* .profile {
   width: 100%;
   padding: 0px 8px;
   display: flex;
@@ -68,19 +69,20 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .username {
-  width: 100px;
+  width: 150px;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 1rem;
   overflow: hidden;
 }
 
-.username {
+/* .username {
   text-transform: capitalize;
   font-size: 1.1rem;
-}
+} */
 
 .links , .ExpandedLinks {
   width: 100%;
@@ -102,11 +104,11 @@
 
 .links li>div , .ExpandedLinks li{
   padding: 10px;
-  transition: all 0.3s linear;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -ms-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
 }
 
 

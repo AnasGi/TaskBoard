@@ -118,6 +118,7 @@ export default function Notes() {
             <SearchIcon />
             <input
               type="text"
+              placeholder="search" 
               className="rounded p-2 pb-0 pt-0"
               onChange={(e) => setSearch(e.target.value)}
             />

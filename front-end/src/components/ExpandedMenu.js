@@ -27,7 +27,7 @@ export default function ExpandedMenu() {
   const dispatch = useDispatch();
 
   if (isSignedIn) {
-    // const email = user.primaryEmailAddress.emailAddress;
+    const email = user.primaryEmailAddress.emailAddress;
     let fullName;
 
     if (fullName) {
@@ -36,7 +36,7 @@ export default function ExpandedMenu() {
       fullName = user.username;
     }
     return (
-      <div className="menu_container" style={{marginRight:"50px" }}>
+      <div className="menu_container" style={{ marginRight: "50px" }}>
         <div className="menu shadow">
           <ArrowBackIosNewIcon
             className="showMoreMenu shadow"
@@ -94,15 +94,20 @@ export default function ExpandedMenu() {
               <span>Contact</span>
             </li>
             <hr className="mt-3 mb-3" />
-            <div className="pt-2 pb-2">
-              <div className="themeSwith mb-3">
+            <div className="pt-2 pb-2" style={{ padding: "10px" }}>
+              <div className="d-flex align-items-center gap-3 justify-content-center w-100">
+                <UserButton />
+                <div className="d-flex flex-column">
+                  <span className="username">{fullName}</span>
+                  <span className="username">{email}</span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-3 w-100 d-flex align-items-center justify-content-center">
+              <div className="themeSwith">
                 <FormControlLabel
                   control={<MaterialUISwitch defaultChecked />}
                 />
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <UserButton />
-                <span className="username">{fullName}</span>
               </div>
             </div>
           </ul>

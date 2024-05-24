@@ -122,7 +122,8 @@ export default function Tasks() {
   if (allTasks !== "load") {
 
     return (
-      <div style={{ width: "90%" , height:"100vh", padding:"10px 0px"}}>
+      <div style={{ width: "90%" , height:"100vh", padding:"10px 0px" , overflowY:"scroll"}}>
+        <div className="h-100 overfow-hidden">
         <Toaster position="top-center" reverseOrder={false} />
         <div>
           <Category />
@@ -151,10 +152,10 @@ export default function Tasks() {
         </div>
         <div className="d-flex align-items-center gap-3 mt-2">
           <SearchIcon/>
-          <input type="text" className="rounded p-2 pb-0 pt-0" onChange={(e)=>setSearch(e.target.value)}/>
+          <input type="text" placeholder="search" className="rounded p-2 pb-0 pt-0" onChange={(e)=>setSearch(e.target.value)}/>
         </div>
         {ShowAddTaskForm && <AddTasks/>}
-        <div className="overflow-y-scroll mt-2 " style={{ maxHeight:"77%"}}>
+        <div className="overflow-y-scroll mt-3 " style={{ maxHeight:"70%"}}>
           {Tasks.length !== 0
             ? Tasks.map((task, i) => (
                 <div key={i} className="p-2 border border-2 rounded" style={{margin:"7px 5px 7px 0px"}} onMouseLeave={()=>setStartEdit(false)}>
@@ -202,13 +203,13 @@ export default function Tasks() {
                     <div className="d-flex gap-2" style={{width:"15%"}}>
                       {
                         task.isDone ? 
-                        <span className="btn btn-success fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px"}}>Done</span> 
+                        <span className="btn btn-success fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px" , cursor:"default"}}>Done</span> 
                         : 
-                        <span className="btn btn-warning fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px"}}>Active</span>
+                        <span className="btn btn-warning fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px" , cursor:"default"}}>Active</span>
                       }
                       {
                         task.isImportant &&
-                        <span className="btn btn-danger fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px"}}>Important</span> 
+                        <span className="btn btn-danger fw-bold p-2 pt-1 pb-1 rounded" style={{fontSize:"12px" , cursor:"default"}}>Important</span> 
                       }
                     </div>
                     <div className="d-flex gap-2 text-body-secondary" style={{fontSize:"14px" , width:"15%"}}>
@@ -232,6 +233,7 @@ export default function Tasks() {
           <Fab size="medium" color="secondary" aria-label="add" className="AddTaskIcon" style={{position:"absolute"}} onClick={() => dispatch({type : 'showTaskForm'})}>
             <AddIcon />
           </Fab>
+        </div>
         
       </div>
     );

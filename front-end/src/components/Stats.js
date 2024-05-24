@@ -139,6 +139,27 @@ export default function Stats() {
                   <p className="fw-bold text-center m-0">Task completion rate</p>
                 </div>
             </div>
+
+            <div className="mt-5 m-3 mb-5 p-3 card shadow">
+              <h5 className="fw-bold d-flex gap-2">
+              <LeaderboardIcon/>
+              <span>
+                Your daily progress
+              </span>
+              </h5>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={chartDonnees} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="completedTasks" name="Completed tasks" stackId="a" fill="#82ca9d" />
+                  <Bar dataKey="notCompletedTasks" name="Incompleted tasks" stackId="a" fill="#ff8042" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
             <div className="mt-5 m-3 mb-5 d-flex justify-content-center align-items-center">
               <div className="w-50">
                 <h5 className="fw-bold d-flex gap-2">
@@ -180,25 +201,7 @@ export default function Stats() {
 
             
   
-            <div className="mt-5 m-3 mb-5 p-3 card shadow">
-              <h5 className="fw-bold d-flex gap-2">
-              <LeaderboardIcon/>
-              <span>
-                Your daily progress
-              </span>
-              </h5>
-              <ResponsiveContainer width="100%" height={400}>
-                <BarChart data={chartDonnees} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="completedTasks" name="Completed tasks" stackId="a" fill="#82ca9d" />
-                  <Bar dataKey="notCompletedTasks" name="Incompleted tasks" stackId="a" fill="#ff8042" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            
   
             {/* Rendu conditionnel des listes de tâches */}
             {/* {stats.map((st, index) => (
