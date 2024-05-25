@@ -122,7 +122,7 @@ export default function Tasks() {
   if (allTasks !== "load") {
 
     return (
-      <div style={{ width: "90%" , height:"100vh", padding:"10px 0px" , overflowY:"scroll"}}>
+      <div style={{ width: "90%" , height:"100vh", padding:"10px 0px"}}>
         <div className="h-100 overfow-hidden">
         <Toaster position="top-center" reverseOrder={false} />
         <div>

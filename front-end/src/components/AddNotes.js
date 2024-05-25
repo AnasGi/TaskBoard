@@ -9,7 +9,7 @@ import { useAuth } from "@clerk/clerk-react";
 export default function AddNotes() {
 
   const dispatch = useDispatch();
-  const ShowAddTaskForm = useSelector((d) => d.showNoteForm);
+  const ShowAddNoteForm = useSelector((d) => d.showNoteForm);
 
   const { userId } = useAuth();
   const [newNote, setNewNote] = useState("");
@@ -48,13 +48,13 @@ export default function AddNotes() {
       sx={{
         color: "#fff",
         backgroundColor: "rgba(0, 0, 0, 0.2)",
-        zIndex: (theme) => theme.zIndex.drawer + 1,
+        zIndex: 2,
       }}
-      open={ShowAddTaskForm}
+      open={ShowAddNoteForm}
     >
       <div className="d-flex justify-content-center align-items-center h-100 w-100">
-        <form className="w-50 bg-light p-3 rounded" onSubmit={handleAddNote}>
-        <h2 className="fw-bold text-dark">Create New Note</h2>
+        <form className="bg-light p-4 rounded shadow" style={{width:"40%"}} onSubmit={handleAddNote}>
+        <h2 className="fw-bold text-dark mb-5">Create New Note</h2>
           <div className="mt3 mb-3 m-0">
             <TextField
               value={newTitle}

@@ -95,12 +95,12 @@ export default function AddTasks() {
           sx={{
             color: "#fff",
             backgroundColor: "rgba(0, 0, 0, 0.2)",
-            zIndex: (theme) => theme.zIndex.drawer + 1,
+            zIndex: 2,
           }}
           open={ShowAddTaskForm}
         >
-          <form onSubmit={handleSubmit} className="w-50 bg-light p-3 rounded">
-            <h2 className="fw-bold text-dark">Create New task</h2>
+          <form onSubmit={handleSubmit} className=" bg-light p-4 rounded shadow" style={{width:"40%"}}>
+            <h2 className="fw-bold text-dark mb-5">Create New task</h2>
               <div className="m-0 mt-3 mb-3">
                 <TextField
                   id="outlined-basic"

@@ -113,13 +113,13 @@
 
 
 .links li>div.active , .links li>div:hover {
-  background-color: black;
+  background-color: rgb(39, 39, 39);
   color: white;
   border-radius: 100%;
 }
 
 .ExpandedLinks li:has(.active) , .ExpandedLinks li:hover {
-  background-color: black;
+  background-color: rgb(79, 79, 79);
   color: white;
   border-radius: 30px;
 }
