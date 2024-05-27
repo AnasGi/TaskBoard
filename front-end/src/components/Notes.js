@@ -1,19 +1,20 @@
-import GetNotes from "../hooks/GetNotes";
-import CircularProgress from "@mui/material/CircularProgress";
-import "../styles/Note.css";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import { useDispatch, useSelector } from "react-redux";
-import AddNotes from "./AddNotes";
-import React, { useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
-import Backdrop from "@mui/material/Backdrop";
+import AddIcon from "@mui/icons-material/Add";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import SortIcon from "@mui/icons-material/Sort";
-import GetFiltredData from "./GetFiltredData";
 import SearchIcon from "@mui/icons-material/Search";
+import SortIcon from "@mui/icons-material/Sort";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import Fab from "@mui/material/Fab";
 import axios from "axios";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import noTasksImg from "../Assets/error.jpg";
+import GetNotes from "../hooks/GetNotes";
+import "../styles/Note.css";
+import AddNotes from "./AddNotes";
+import GetFiltredData from "./GetFiltredData";
 
 export default function Notes() {
   const dispatch = useDispatch();
@@ -101,7 +102,7 @@ export default function Notes() {
     }
   }
 
-  console.log(ShowAddNoteForm)
+  console.log(ShowAddNoteForm);
 
   function handleDeleteTask(noteId) {
     Swal.fire({
@@ -217,7 +218,7 @@ export default function Notes() {
           </div>
         </div>
         <div className="">
-        {ShowAddNoteForm && <AddNotes />}
+          {ShowAddNoteForm && <AddNotes />}
           {UserNotes.length > 0 ? (
             <div className="notes">
               {UserNotes.map((note, i) => (
@@ -321,10 +322,11 @@ export default function Notes() {
             </div>
           ) : (
             <div
-              className="d-flex justify-content-center align-items-center"
-              style={{ height: "80vh" }}
+              className="d-flex flex-column align-items-center justify-content-center"
+              style={{ height: "500px" }}
             >
-              <p className="text-body-secondary">No notes available.</p>
+              <img src={noTasksImg} alt="" className="icon" />
+              <p className="no-content">No Notes Available</p>
             </div>
           )}
           <Fab

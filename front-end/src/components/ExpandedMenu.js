@@ -84,14 +84,14 @@ export default function ExpandedMenu() {
             <li>
               <div
                 className={
-                  currentUrl.pathname === `/Contact-us/${userId}`
+                  currentUrl.pathname === `/Support/${userId}`
                     ? "active"
                     : ""
                 }
               >
                 <ContactSupportIcon />
               </div>
-              <span>Contact</span>
+              <span>Support</span>
             </li>
             <hr className="mt-3 mb-3" />
             <div className="pt-2 pb-2" style={{ padding: "10px" }}>
