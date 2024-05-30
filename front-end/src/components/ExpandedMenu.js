@@ -6,8 +6,6 @@ import TaskIcon from "@mui/icons-material/Task";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import MaterialUISwitch from "./ThemeSwitch";
 
 import "../styles/Menu.css";
 import { useDispatch } from "react-redux";
@@ -87,13 +85,6 @@ export default function ExpandedMenu() {
                   <span className="username">{fullName}</span>
                   <span className="username">{email}</span>
                 </div>
-              </div>
-            </div>
-            <div className="mt-3 w-100 d-flex align-items-center justify-content-center">
-              <div className="themeSwith">
-                <FormControlLabel
-                  control={<MaterialUISwitch defaultChecked />}
-                />
               </div>
             </div>
           </ul>

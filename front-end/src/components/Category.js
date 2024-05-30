@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "@clerk/clerk-react";
 import GetTasks from "../hooks/GetTasks";
 import Swal from "sweetalert2";
-//npm i react-hot-toast
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Category() {

@@ -17,6 +17,15 @@ import "../styles/welcome.css";
 import GetRatings from "../hooks/GetRatings";
 import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+import Team from "./Team";
 
 export default function Welcome() {
   const pros = [
@@ -266,6 +275,11 @@ export default function Welcome() {
               day.
             </p>
           </div>
+
+          <div className="mt-5 d-flex justify-content-center" id="team">
+            <hr className="w-50" />
+          </div>
+          <Team />
         </section>
 
         <div className="mt-5 mb-5 d-flex justify-content-center">
@@ -276,49 +290,75 @@ export default function Welcome() {
           <h1 className="fw-bold text-center" style={{ fontSize: "50px" }}>
             Our users experiences
           </h1>
-          <div className="d-flex justify-content-center mt-4">
-            <div className="d-flex gap-3 w-50 overflow-x-scroll p-3">
-              {allRatings.length !== 0 ? (
-                allRatings !== "load" ? (
-                  allRatings
-                    .filter((rating) => rating.score >= 3 && rating.score <= 5)
-                    .map((rate, i) => (
-                      <div
-                        key={i}
-                        className="reviewCard card shadow p-3"
-                        style={{ minWidth: "250px" }}
-                      >
-                        <div className="d-flex gap-2 align-items-center">
-                          <Avatar>{rate.fullName.split(" ")[0][0]}</Avatar>
-                          <div>
-                            <p className="m-0 fw-bold">{rate.fullName}</p>
-                            <p
-                              className="m-0 text-body-secondary"
-                              style={{ fontSize: "12px" }}
-                            >
-                              {new Date(rate.createdAt).toDateString()}
-                            </p>
-                          </div>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={3}
+            centeredSlides={true}
+            loop={true}
+            className="p-3 w-75"
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            pagination={{ clickable: true }}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {allRatings.length !== 0 ? (
+              allRatings !== "load" ? (
+                allRatings
+                  .filter((rating) => rating.score >= 3 && rating.score <= 5)
+                  .map((rate, i) => (
+                    <SwiperSlide
+                      key={i}
+                      className="reviewCard rounded p-3 pb-0 shadow"
+                      style={{height:"200px"}}
+                    >
+                      <div className="d-flex gap-2 align-items-center">
+                        <Avatar>{rate.fullName.split(" ")[0][0]}</Avatar>
+                        <div>
+                          <p className="m-0 fw-bold">{rate.fullName}</p>
+                          <p
+                            className="m-0 text-body-secondary"
+                            style={{ fontSize: "12px" }}
+                          >
+                            {new Date(rate.createdAt).toDateString()}
+                          </p>
                         </div>
-                        <hr />
-                        <div className="">
-                          <Rating
-                            readOnly
-                            name="simple-controlled"
-                            value={rate.score}
-                          />
-                        </div>
-                        <p className="m-0">{rate.description}</p>
                       </div>
-                    ))
-                ) : (
-                  <CircularProgress />
-                )
+                      <hr />
+                      <div className="">
+                        <Rating
+                          readOnly
+                          name="simple-controlled"
+                          value={rate.score}
+                        />
+                      </div>
+                      <p>{rate.description}</p>
+                    </SwiperSlide>
+                  ))
               ) : (
-                <p className="text-center w-100">No ratings or reviews yet</p>
-              )}
-            </div>
-          </div>
+                <CircularProgress />
+              )
+            ) : (
+              <p className="text-center w-100">No ratings or reviews yet</p>
+            )}
+          </Swiper>
         </aside>
 
         <section>
@@ -330,7 +370,7 @@ export default function Welcome() {
             <span className="text-body-secondary">Enter TaskBoard </span>
             <SignInButton className="btn btn-body text-decoration-underline" />
             <div>
-              <img src={getStarted} alt="" className="w-80" />
+              <img src={getStarted} alt="" id="footerImg" className="w-80" />
               <hr className="m-0" />
             </div>
           </div>

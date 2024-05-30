@@ -5,7 +5,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import TaskIcon from "@mui/icons-material/Task";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-// import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import "../styles/Menu.css";
 import { useDispatch } from "react-redux";

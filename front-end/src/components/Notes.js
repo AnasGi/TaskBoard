@@ -102,8 +102,6 @@ export default function Notes() {
     }
   }
 
-  console.log(ShowAddNoteForm);
-
   function handleDeleteTask(noteId) {
     Swal.fire({
       title: "Confirmation",

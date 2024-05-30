@@ -5,7 +5,6 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useNavigate } from 'react-router-dom';
 import ContactSupport from './ContactSupport';
 import Rating from '@mui/material/Rating';
 import Gears from '../Assets/management.gif'
@@ -17,7 +16,6 @@ import Guide from './guide';
 
 const Support= () => {
 
-  const navigate = useNavigate();
   const {userId} = useAuth()
   const { user } = useUser();
 
@@ -166,7 +164,7 @@ const Support= () => {
               </section>
               
             </div>
-            <div className=''>
+            <div>
               <section id="guide">
                 <h2>Usage Guide</h2>
                 <article className='card shadow p-3'>
@@ -177,13 +175,7 @@ const Support= () => {
 
               {showGuide && <Guide open={showGuide} onClose={()=>setShowGuide(false)}/>}
   
-              <section id="live-chat">
-                <h2>Live Chat</h2>
-                <article className='card shadow p-3'>
-                  <p>Need immediate assistance? Use our live chat to talk with a member of our team.</p>
-                  <button className='btn btn-outline-dark' onClick={()=>navigate('/chat')}>Start Chat</button>
-                </article>
-              </section>
+              
                 <section id="resources">
                   <h2>Rating</h2>
                   {

@@ -69,15 +69,14 @@
     animation: fade 1s linear;
 }
 
-#previewText{
+#previewText {
     height: 120px;
 }
 
-.reviewCard:hover{
+.reviewCard:hover {
     transition: .3s;
-  background-color: rgb(230, 230, 196);
-  transform: translateY(-5px);
-  cursor: default;
+    background-color: rgb(230, 230, 196);
+    cursor: default;
 }
 
 
@@ -88,8 +87,146 @@
     border-radius: 10px;
 }
 
+/* Team.js */
+.section-white {
+    background: #fff;
+    padding: 70px 0;
+}
+
+.team-item {
+    background: #f4f5f6;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 12px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.swiper-pagination {
+    position: static !important;
+}
+.swiper-button-next, .swiper-button-prev {
+    margin: 10px;
+}
+
+.team-item:hover {
+    background: #242734;
+    color: white;
+}
+
+.team-item h3 {
+    margin-top: 20px;
+    color: #454545;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+.section-subtitle {
+    white-space: pre-line;
+}
+
+.team-item:hover h3 {
+    color: #ffffff;
+}
+
+.team-info p {
+    color: #acacac;
+    font-style: italic;
+}
+
+.team-info::after {
+    background: #008aff;
+    background: -webkit-linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
+    background: -o-linear-gradient(bottom right, #6B02FF, #985BEF);
+    background: -moz-linear-gradient(bottom right, #008aff, #1ad2fd);
+    background: linear-gradient(135deg, #6B02FF 0%, #985BEF 100%);
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 50px;
+    height: 3px;
+}
+
+.team-img {
+    width: 140px;
+    /* Set a fixed width */
+    height: 140px;
+    /* Set a fixed height */
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+    padding: 6px 6px;
+    background-color: #dedede;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+ul.team-icon {
+    margin-top: 25px;
+    padding: 0;
+}
+
+ul.team-icon li {
+    display: inline-block;
+    margin: 0 3px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+ul.team-icon li a {
+    margin: 0;
+    display: inline-block;
+    padding: 8px 8px;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    line-height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #fff;
+}
+
+ul.team-icon li a.instagram {
+    background-color: #FD1D1D;
+
+}
+
+ul.team-icon li a.github {
+    background-color: #181717;
+}
+
+ul.team-icon li a.facebook {
+    background-color: #1877F2;
+}
+
+ul.team-icon li a.linkedin {
+    background-color: #0A66C2;
+}
+
+.team-icon li a:hover {
+    color: #dedede;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
 @media screen and (max-width : 780px) {
-    #taskBoard , #login{
+
+    #taskBoard,
+    #login,
+    #footerImg {
         display: none;
     }
 }
