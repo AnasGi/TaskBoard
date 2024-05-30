@@ -5,11 +5,20 @@ import getStarted from "../Assets/getStarted.webp";
 import { ReactComponent as Fb } from "../Assets/facebook.svg";
 import { ReactComponent as Insta } from "../Assets/instagram.svg";
 import { ReactComponent as In } from "../Assets/linkedin.svg";
-import { ReactComponent as Smile } from "../Assets/smile.svg";
+import tasksPage from "../Assets/tasksPage.jpg";
+import notesPage from "../Assets/notesPage.jpg";
+import statsPage from "../Assets/statsPage.jpg";
+import Backdrop from "@mui/material/Backdrop";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import ContactUs from "./ContactUs";
+import CircularProgress from "@mui/material/CircularProgress";
+import "../styles/welcome.css";
+import GetRatings from "../hooks/GetRatings";
+import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
 
 export default function Welcome() {
-
   const pros = [
     {
       title: "Simple layout",
@@ -22,11 +31,34 @@ export default function Welcome() {
     {
       title: "Statistics",
       text: "Gain a holistic view of your tasks with detailed statistics and progress tracking.",
-    }
+    },
   ];
 
+  const sitePreviewImgs = [
+    {
+      img: tasksPage,
+      title: "Manage your tasks",
+      text: "TaskBoard offer a simple way to manage your tasks, mark them as important, active or completed, filter and sort them as you please, plus you can categorize them for better organization",
+    },
+    {
+      img: notesPage,
+      title: "Keep note of your notes",
+      text: "Notes are simple, and we make them simpler,easier and appealing with TaskBoard",
+    },
+    {
+      img: statsPage,
+      title: "Follow your progress",
+      text: "Keep track of your progress, TaskBoard helps you to visualize your daily progress",
+    },
+  ];
+
+  const footerLinkStyle =
+    "link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-body-secondary";
+
   let [index, setIndex] = useState(0);
+  let [indexImg, setIndexImg] = useState(0);
   const [ShowContactForm, setShowContactForm] = useState(false);
+  const allRatings = GetRatings();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -40,35 +72,52 @@ export default function Welcome() {
 
   return (
     <SignedOut>
-
       <div className="h-100">
         <nav className="z-3 navbar navbar-expand-lg bg-body-tertiary w-100 position-sticky top-0">
           <div className="container-fluid">
             <div className="d-flex gap-5">
               <a className="navbar-brand" href="/">
                 <img src={logo} alt="TaskBoard logo" title="TaskBoard" />
-                <span className="fw-bold">TaskBoard</span>
+                <span className="fw-bold" id="taskBoard">
+                  TaskBoard
+                </span>
               </a>
-              <div className="d-flex gap-3 HeaderLinks">
-                <a className="nav-link fw-bold" href="/">
-                  Home
-                </a>
-                <a className="nav-link fw-bold" href="#about">
-                  About
-                </a>
-                <a className="nav-link fw-bold" href="#team">
-                  Team
-                </a>
-                <a className="nav-link fw-bold" href="#contact-us" onClick={()=>setShowContactForm(p=>!p)}>
-                  Contact us
+              <div className="d-flex gap-4 align-items-center HeaderLinks">
+                <a href="#peek">Discover</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="#feedbacks">Feedbacks</a>
+                <a
+                  href="#contact-us"
+                  onClick={() => setShowContactForm(true)}
+                  className="welcomeNavLink"
+                >
+                  Contact
                 </a>
               </div>
             </div>
-            {
-              ShowContactForm && <ContactUs/>
-            }
+            <Backdrop
+              sx={{
+                backgroundColor: "rgba(0, 0, 0, 0.2)",
+                zIndex: 2,
+              }}
+              open={ShowContactForm}
+              className="flex-column"
+            >
+              <div className="contactFormWrapper shadow">
+                <ContactUs />
+                <div className="w-100 mt-2">
+                  <button
+                    className="btn btn-outline-danger w-100"
+                    onClick={() => setShowContactForm(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </Backdrop>
             <div className="d-flex gap-2 align-items-center">
-              <span className="text-body-secondary">
+              <span className="text-body-secondary" id="login">
                 Log in or create a new account
               </span>
               <svg width="1" height="20">
@@ -87,7 +136,7 @@ export default function Welcome() {
         </nav>
         <main className="text-center h-50 d-flex align-items-center justify-content-center">
           <section className="w-100">
-            <h1 className="fw-bold p-2" style={{ fontSize: "80px" }}>
+            <h1 className="fw-bold p-2 w-100" style={{ fontSize: "5vw" }}>
               Write,plan,organize
             </h1>
             <div className="text-center p-2 d-flex justify-content-center">
@@ -104,7 +153,7 @@ export default function Welcome() {
             </div>
           </section>
         </main>
-        <article>
+        <article style={{ height: "500px" }}>
           <header>
             <div className="prosList d-flex justify-content-center gap-5">
               <div
@@ -152,6 +201,41 @@ export default function Welcome() {
           </aside>
         </article>
 
+        <section id="peek">
+          <article className="text-center" id="previewText" key={indexImg}>
+            <h1 className="fw-bold">{sitePreviewImgs[indexImg].title}</h1>
+            <div className="d-flex justify-content-center">
+              <p className="text-body-secondary w-50">
+                {sitePreviewImgs[indexImg].text}
+              </p>
+            </div>
+          </article>
+          <aside className="siteImgsWrapper mt-3">
+            <img
+              src={sitePreviewImgs[indexImg].img}
+              alt=""
+              className="shadow"
+            />
+            <RadioGroup
+              defaultValue="tasks"
+              name="radio-buttons-group"
+              className="flex-row"
+            >
+              <Radio
+                onClick={() => setIndexImg(0)}
+                value={"tasks"}
+                color="secondary"
+              />
+              <Radio
+                onClick={() => setIndexImg(1)}
+                value={"notes"}
+                color="success"
+              />
+              <Radio onClick={() => setIndexImg(2)} value={"stats"} />
+            </RadioGroup>
+          </aside>
+        </section>
+
         <div className="mt-5 d-flex justify-content-center" id="about">
           <hr className="w-50" />
         </div>
@@ -169,34 +253,84 @@ export default function Welcome() {
               your daily workflow by efficiently managing tasks and notes. With
               its intuitive interface, TaskBoard empowers users to create,
               prioritize, and track tasks seamlessly, ensuring nothing falls
-              through the cracks. Whether you're juggling work projects, personal
-              errands, or creative endeavors, TaskBoard provides the flexibility
-              to customize boards, columns, and cards to suit your unique needs.
-              Stay organized with drag-and-drop functionality, allowing you to
-              effortlessly move tasks between different stages of completion.
-              Additionally, TaskBoard seamlessly integrates note-taking
-              capabilities, allowing users to capture ideas, insights, and
-              reminders alongside their tasks. With TaskBoard, you'll never miss a
-              deadline or forget an important detail, empowering you to stay
-              focused, productive, and in control of your day.
+              through the cracks. Whether you're juggling work projects,
+              personal errands, or creative endeavors, TaskBoard provides the
+              flexibility to customize boards, columns, and cards to suit your
+              unique needs. Stay organized with drag-and-drop functionality,
+              allowing you to effortlessly move tasks between different stages
+              of completion. Additionally, TaskBoard seamlessly integrates
+              note-taking capabilities, allowing users to capture ideas,
+              insights, and reminders alongside their tasks. With TaskBoard,
+              you'll never miss a deadline or forget an important detail,
+              empowering you to stay focused, productive, and in control of your
+              day.
             </p>
           </div>
         </section>
 
-        <div className="mt-5 d-flex justify-content-center">
+        <div className="mt-5 mb-5 d-flex justify-content-center">
           <hr className="w-50" />
         </div>
 
-        <section className="mt-5">
+        <aside style={{ height: "400px" }} id="feedbacks">
+          <h1 className="fw-bold text-center" style={{ fontSize: "50px" }}>
+            Our users experiences
+          </h1>
+          <div className="d-flex justify-content-center mt-4">
+            <div className="d-flex gap-3 w-50 overflow-x-scroll p-3">
+              {allRatings.length !== 0 ? (
+                allRatings !== "load" ? (
+                  allRatings
+                    .filter((rating) => rating.score >= 3 && rating.score <= 5)
+                    .map((rate, i) => (
+                      <div
+                        key={i}
+                        className="reviewCard card shadow p-3"
+                        style={{ minWidth: "250px" }}
+                      >
+                        <div className="d-flex gap-2 align-items-center">
+                          <Avatar>{rate.fullName.split(" ")[0][0]}</Avatar>
+                          <div>
+                            <p className="m-0 fw-bold">{rate.fullName}</p>
+                            <p
+                              className="m-0 text-body-secondary"
+                              style={{ fontSize: "12px" }}
+                            >
+                              {new Date(rate.createdAt).toDateString()}
+                            </p>
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="">
+                          <Rating
+                            readOnly
+                            name="simple-controlled"
+                            value={rate.score}
+                          />
+                        </div>
+                        <p className="m-0">{rate.description}</p>
+                      </div>
+                    ))
+                ) : (
+                  <CircularProgress />
+                )
+              ) : (
+                <p className="text-center w-100">No ratings or reviews yet</p>
+              )}
+            </div>
+          </div>
+        </aside>
+
+        <section>
           <h1 className="text-center mb-3 fw-bold" style={{ fontSize: "50px" }}>
             Get started today
           </h1>
           <div className="text-center">
             <p className="fs-5">Play around with it first. Love it later.</p>
             <span className="text-body-secondary">Enter TaskBoard </span>
-              <SignInButton className="btn btn-body text-decoration-underline" />
+            <SignInButton className="btn btn-body text-decoration-underline" />
             <div>
-              <img src={getStarted} alt="" />
+              <img src={getStarted} alt="" className="w-80" />
               <hr className="m-0" />
             </div>
           </div>
@@ -209,7 +343,7 @@ export default function Welcome() {
               <span className="fw-bold">TaskBoard</span>
             </a>
             <p className="text-body-secondary mt-3">
-              <Smile />
+              &copy;
               <span className="m-2">
                 {new Date().getFullYear()} TaskBoard project
               </span>
@@ -228,36 +362,40 @@ export default function Welcome() {
               </a>
             </div>
             <hr />
-            <div>
-              <a
-                className="link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-body-secondary"
-                href="/"
-              >
+            <div className="mb-2">
+              <a className={footerLinkStyle} href="/">
                 Home
               </a>
             </div>
-            <div>
+
+            <div className="mb-2">
+              <a className={footerLinkStyle} href="/#peek">
+                Sneak peek
+              </a>
+            </div>
+
+            <div className="mb-2">
+              <a className={footerLinkStyle} href="/#about">
+                About TaskBoard
+              </a>
+            </div>
+            <div className="mb-2">
+              <a className={footerLinkStyle} href="/#team">
+                Our Team
+              </a>
+            </div>
+            <div className="mb-2">
+              <a className={footerLinkStyle} href="/#feedbacks">
+                Feedbacks from users
+              </a>
+            </div>
+            <div className="mb-2">
               <a
-                className="link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-body-secondary"
-                href="/contact-us"
+                className={footerLinkStyle}
+                href="/#contact-us"
+                onClick={() => setShowContactForm(true)}
               >
                 Contact us
-              </a>
-            </div>
-            <div>
-              <a
-                className="link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-body-secondary"
-                href="/#about"
-              >
-                About
-              </a>
-            </div>
-            <div>
-              <a
-                className="link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-body-secondary"
-                href="/"
-              >
-                Feedback
               </a>
             </div>
           </div>

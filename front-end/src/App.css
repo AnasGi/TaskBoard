@@ -13,44 +13,6 @@ div {
   scrollbar-width: thin;
 }
 
-/* .App{
-  background-color: rgb(48, 48, 48);
-  color: white;
-} */
-
-/* welcome.js */
-.navbar-brand img {
-  width: 30px;
-  height: 30px;
-}
-
-.navbar-brand span {
-  vertical-align: middle;
-}
-.HeaderLinks {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-}
-
-.HeaderLinks a {
-  transition: 0.3s;
-  padding: 3px 8px;
-}
-.HeaderLinks a:hover {
-  border-radius: 10px;
-  background-color: rgb(223, 223, 223);
-}
-.prosList header {
-  width: 80%;
-}
-.iconWrapper {
-  border-radius: 10px;
-  border: 1px solid rgb(203, 203, 203);
-  padding: 8px;
-  transition: 0.2s;
-  cursor: pointer;
-}
 
 @keyframes fade {
   0% {
@@ -62,24 +24,6 @@ div {
   100% {
     opacity: 1;
   }
-}
-.prosText {
-  animation: fade 1s linear;
-}
-
-.social-media:hover {
-  transition: 0.2s;
-  filter: drop-shadow(2px 2px 2px rgb(209, 209, 209));
-}
-
-.contactFormWrapper {
-  position: absolute;
-  top: 100%;
-  width: 30%;
-  z-index: 100;
-  background-color: #f8f8f8;
-  animation: fade 0.2s linear;
-  padding: 10px 12px;
 }
 
 /* Category.js */
@@ -138,7 +82,6 @@ div {
 }
 
 .no-content {
-  /* font-size: 18px; */
   font-weight: bold;
   color: black;
   margin-top: 10px;

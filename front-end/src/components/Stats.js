@@ -116,7 +116,7 @@ export default function Stats() {
       >
         {stats.length > 0 ? (
           <div>
-            <div className="d-flex justify-content-center align-items-center mt-5 mb-5 gap-5">
+            <div className="d-flex justify-content-center align-items-center mt-2 mb-5 gap-5">
               <div className="d-flex gap-3 align-items-start mt-4 w-100">
                 <div
                   className="d-flex flex-column gap-3"
@@ -153,11 +153,12 @@ export default function Stats() {
                     </ResponsiveContainer>
                   </div>
 
-                  {
-                    tasks !== 'load' &&
-                    tasks.filter((task) => task.userId === userId).length <= 0 ?
-                    <p className="text-center w-100 card shadow p-3">No analytics yet</p>
-                    :
+                  {tasks !== "load" &&
+                  tasks.filter((task) => task.userId === userId).length <= 0 ? (
+                    <p className="text-center w-100 card shadow p-3">
+                      No analytics yet
+                    </p>
+                  ) : (
                     <div className="w-100 card shadow p-3">
                       <div className="d-flex align-items-center">
                         <div className="">
@@ -188,27 +189,26 @@ export default function Stats() {
                             <span>Number of tasks by their status</span>
                           </h5>
                           <p className="text-body-secondary">
-                            {
-                              maxTaskState.name === "Active tasks"
+                            {maxTaskState.name === "Active tasks"
                               ? "You should complete your active tasks because letting them accumulate will result in tight deadlines."
-                              : maxTaskState.name === "Completed tasks"
-                              &&  "Your have few tasks remaining, keep up the good work"
-                            }
+                              : maxTaskState.name === "Completed tasks" &&
+                                "Your have few tasks remaining, keep up the good work"}
                           </p>
                         </div>
                       </div>
                     </div>
-                  }
-
+                  )}
                 </div>
 
                 <div className="d-flex flex-column gap-3">
                   <div className="d-flex gap-3 align-items-center justify-content-between">
-                    {
-                      tasks !== "load" &&
-                      tasks.filter((task) => task.userId === userId).length <=0 ?
-                      <p className="text-center p-3 w-100">No tasks available</p>
-                      :
+                    {tasks !== "load" &&
+                    tasks.filter((task) => task.userId === userId).length <=
+                      0 ? (
+                      <p className="text-center p-3 w-100">
+                        No tasks available
+                      </p>
+                    ) : (
                       <div className="CircularProgressbarContainer">
                         <CircularProgressbar
                           value={
@@ -227,7 +227,7 @@ export default function Stats() {
                           Task completion rate
                         </p>
                       </div>
-                    }
+                    )}
                   </div>
                   <div
                     className="p-3 rounded shadow"
@@ -257,7 +257,7 @@ export default function Stats() {
                       backgroundColor: "#19E353",
                     }}
                   >
-                    <p className="m-0 fs-5">Total tasks</p>
+                    <p className="m-0 fs-5">Total notes</p>
                     {notes !== "load" ? (
                       <p className="fw-bold fs-1">
                         {notes.filter((task) => task.userId === userId).length}
@@ -320,64 +320,6 @@ export default function Stats() {
                 </div>
               </div>
             </div>
-
-            {/* Rendu conditionnel des listes de tâches */}
-            {/* {stats.map((st, index) => (
-              <div key={index} className="mb-4">
-                <div className="list-group-item" style={{ backgroundColor: "#ffffff" }}>
-                  <div className="mb-3">
-                    <strong>Nombre de tâches : {st.nbrTasks}</strong>
-                  </div>
-                  <button className="btn btn-primary mb-3" onClick={() => setShowAllTasks(!showAllTasks)}>
-                    {showAllTasks ? "Cacher toutes les tâches" : "Voir toutes les tâches"} <i className={`bi ${showAllTasks ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
-                  </button>
-                  <div className="mb-3">
-                    <strong>Nombre de tâches terminées : {st.nbrTasksDone}</strong>
-                  </div>
-                  <button className="btn btn-primary mb-3" onClick={() => setShowCompletedTasks(!showCompletedTasks)}>
-                    {showCompletedTasks ? "Cacher les tâches terminées" : "Voir les tâches terminées"} <i className={`bi ${showCompletedTasks ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
-                  </button>
-  
-                  {showAllTasks && (
-                    <div className="mt-3">
-                      <h5>Toutes les tâches :</h5>
-                      <ul className="list-group">
-                        {tasks.map((ts, index) => (
-                          <li key={index} className="list-group-item" style={{ backgroundColor: "#f8f9fa" }}>
-                            <div>
-                              <p>Description : {ts.description}</p>
-                              <p>Catégorie : {ts.nameCategory}</p>
-                              {ts.isDone ? (
-                                <i className="bi bi-check-circle-fill text-success"></i>
-                              ) : (
-                                <i className="bi bi-x-circle-fill text-danger"></i>
-                              )}
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-  
-                  {showCompletedTasks && (
-                    <div className="mt-3">
-                      <h5>Tâches terminées :</h5>
-                      <ul className="list-group">
-                        {tasks.filter(ts => ts.isDone).map((ts, index) => (
-                          <li key={index} className="list-group-item" style={{ backgroundColor: "#f8f9fa" }}>
-                            <div>
-                              <p>Description : {ts.description}</p>
-                              <p>Catégorie : {ts.nameCategory}</p>
-                              <i className="bi bi-check-circle-fill text-success"></i>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))} */}
           </div>
         ) : (
           <p>No statistics available.</p>

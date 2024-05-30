@@ -5,6 +5,7 @@ const taskRoute = require("./routes/tasks");
 const noteRoute = require("./routes/notes");
 const categoryRoute = require("./routes/category");
 const statsRout = require("./routes/stats");
+const ratingRoute = require("./routes/ratings");
 // mongoose
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -17,6 +18,7 @@ app.use("/api/tasks", taskRoute);
 app.use("/api/notes", noteRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/stats", statsRout);
+app.use("/api/ratings", ratingRoute);
 
 // DB connexion
 mongoose.connect("mongodb://127.0.0.1:27017/db_users");

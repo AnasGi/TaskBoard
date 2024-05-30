@@ -5,13 +5,8 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import TaskIcon from "@mui/icons-material/Task";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import FormControlLabel from "@mui/material/FormControlLabel";
-// import InputBase from "@mui/material/InputBase";
-// import IconButton from "@mui/material/IconButton";
-// import SearchIcon from "@mui/icons-material/Search";
-// import Paper from "@mui/material/Paper";
 import MaterialUISwitch from "./ThemeSwitch";
 
 import "../styles/Menu.css";
@@ -71,20 +66,11 @@ export default function ExpandedMenu() {
               </div>
               <span>Statistics</span>
             </li>
-            <li>
+            
+            <li onClick={() => navigate(`/support/${userId}`)}>
               <div
                 className={
-                  currentUrl.pathname === `/Feedback/${userId}` ? "active" : ""
-                }
-              >
-                <ThumbUpAltIcon />
-              </div>
-              <span>Feedback</span>
-            </li>
-            <li>
-              <div
-                className={
-                  currentUrl.pathname === `/Support/${userId}`
+                  currentUrl.pathname === `/support/${userId}`
                     ? "active"
                     : ""
                 }

@@ -2,6 +2,7 @@ import React from "react";
 import Stats from "./Stats";
 import Tasks from "./Tasks";
 import Notes from "./Notes";
+import Support from "./Support";
 
 export default function Content({ nav }) {
   if (nav === "tasks") {
@@ -11,5 +12,8 @@ export default function Content({ nav }) {
   }
   else if (nav === "notes") {
     return <Notes />;
+  }
+  else if (nav === "support") {
+    return <Support />;
   }
 }

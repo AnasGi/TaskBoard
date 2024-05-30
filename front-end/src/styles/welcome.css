@@ -1,0 +1,95 @@
+.navbar-brand img {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-brand span {
+    vertical-align: middle;
+}
+
+.HeaderLinks a {
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 3px 8px;
+    color: black;
+    text-decoration: none;
+}
+
+.HeaderLinks a:hover,
+.activeLink {
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: rgb(223, 223, 223);
+}
+
+.prosList header {
+    width: 80%;
+}
+
+.iconWrapper {
+    border-radius: 10px;
+    border: 1px solid rgb(203, 203, 203);
+    padding: 8px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.siteImgsWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.siteImgsWrapper img {
+    border-radius: 10px;
+    padding: 10px 10px 0px 10px;
+    width: 60%;
+    object-fit: contain;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.prosText,
+#previewText {
+    animation: fade 1s linear;
+}
+
+#previewText{
+    height: 120px;
+}
+
+.reviewCard:hover{
+    transition: .3s;
+  background-color: rgb(230, 230, 196);
+  transform: translateY(-5px);
+  cursor: default;
+}
+
+
+.contactFormWrapper {
+    background-color: #f8f8f8;
+    animation: fade 0.2s linear;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width : 780px) {
+    #taskBoard , #login{
+        display: none;
+    }
+}

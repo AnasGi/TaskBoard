@@ -1,0 +1,14 @@
+.Guide {
+    padding: 10px;
+}
+.Guide h1, h2, h3 {
+    color: #333;
+    font-weight: bold;
+}
+.Guide ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+.Guide li {
+    margin-bottom: 10px;
+}

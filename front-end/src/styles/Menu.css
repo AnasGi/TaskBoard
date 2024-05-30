@@ -51,26 +51,6 @@
   background-color: beige;
 }
 
-/* .profile {
-  width: 100%;
-  padding: 0px 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  align-items: center;
-  transition: all 0.3s linear;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -ms-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
-}
-
-.userinfo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-} */
-
 .username {
   width: 150px;
   text-overflow: ellipsis;
@@ -127,35 +107,6 @@
 .themeSwith{
   background-color: rgb(225, 225, 225);
   width: 70px;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 0px 5px 12px;
   border-radius: 30px;
 }
-
-/* .sign-out {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.sign-out button {
-  background-color: #fff;
-  padding: 10px;
-  transition: all 0.3s linear;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -ms-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
-}
-.sign-out button:hover {
-  background-color: #dfdede;
-} */

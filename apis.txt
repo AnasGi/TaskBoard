@@ -27,3 +27,7 @@ APIs URLS :
   - Statisctics : {fullname, email, nbr_tasks_done, nbr_tasks}
     -- All Users : get("/api/stats")
     -- Specific User : get("/api/stats/:userId")
+
+  - Ratings : 
+    -- All Ratings : get("/api/ratings")
+    -- Create rating : post("/api/rating")
