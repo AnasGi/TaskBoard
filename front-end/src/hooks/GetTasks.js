@@ -13,7 +13,7 @@ export default function GetTasks() {
         const fetchData = async ()=>{
             await axios.get("http://localhost:8000/api/tasks")
             .then(res=>setAllTasks(res.data.tasks))
-            .catch(err=>setAllTasks('error'))
+            .catch(err=>setAllTasks([{error : "Error"}]))
             setLoad(false)
           }
 

@@ -164,7 +164,7 @@ export default function Notes() {
                 x2="0"
                 y2="100"
                 stroke="black"
-                stroke-width="1"
+                strokeWidth="1"
               />
             </svg>
             <div className="d-flex align-items-center gap-3 mt-2">
@@ -201,7 +201,7 @@ export default function Notes() {
                 x2="0"
                 y2="100"
                 stroke="black"
-                stroke-width="1"
+                strokeWidth="1"
               />
             </svg>
             <div className="d-flex align-items-center gap-3 mt-2">

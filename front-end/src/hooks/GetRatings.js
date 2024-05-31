@@ -13,7 +13,7 @@ export default function GetRatings() {
         const fetchData = async ()=>{
             await axios.get("http://localhost:8000/api/ratings")
             .then(res=>setAllRatings(res.data.ratings))
-            .catch(err=>setAllRatings('error'))
+            .catch(err=>setAllRatings([{error : "Error"}]))
             setLoad(false)
           }
 

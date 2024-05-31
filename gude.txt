@@ -1,0 +1,68 @@
+Getting Started
+Login/Register:
+
+Register: If you are a new user, sign up by providing your name, email, and password.
+Login: If you are an existing user, log in with your email and password.
+Dashboard:
+
+Upon logging in, you will be directed to the Dashboard. Here, you can see an overview of your tasks, notes, and basic statistics.
+Creating Tasks and Notes
+Creating a Task:
+
+Navigate to the "Tasks" section.
+Click the "Add Task" button.
+Fill in the task details:
+Title: The name of the task.
+Description: A brief description of the task.
+Due Date: Select the due date for the task.
+Priority: Set the priority (Low, Medium, High).
+Click "Save" to add the task to your task list.
+Creating a Note:
+
+Navigate to the "Notes" section.
+Click the "Add Note" button.
+Fill in the note details:
+Title: The title of the note.
+Content: The content of the note.
+Click "Save" to add the note to your notes list.
+Managing Tasks and Notes
+Viewing Tasks and Notes:
+
+In the "Tasks" section, you can see a list of all your tasks. You can sort them by due date, priority, or status.
+In the "Notes" section, you can see a list of all your notes. Notes can be searched by title or content.
+Editing a Task or Note:
+
+Click on the task or note you want to edit.
+Make the necessary changes in the details form.
+Click "Save" to update the task or note.
+Deleting a Task or Note:
+
+Click on the task or note you want to delete.
+Click the "Delete" button.
+Confirm the deletion in the prompt.
+Viewing Statistics
+Task Statistics:
+
+Navigate to the "Statistics" section.
+View statistics such as:
+Total Tasks: Total number of tasks you have created.
+Completed Tasks: Number of tasks marked as completed.
+Pending Tasks: Number of tasks that are yet to be completed.
+Overdue Tasks: Number of tasks that are past their due date.
+Note Statistics:
+
+View statistics such as:
+Total Notes: Total number of notes you have created.
+Recent Notes: Notes you have created recently.
+Additional Features
+Search and Filter:
+
+Use the search bar to quickly find tasks or notes by title or keywords.
+Use filters to view tasks by their status (completed, pending, overdue) or priority (low, medium, high).
+Notifications:
+
+Receive notifications for upcoming task deadlines and overdue tasks.
+Tips for Effective Use
+Regular Updates: Regularly update your tasks and notes to keep track of your progress and ensure nothing is missed.
+Prioritize Tasks: Use the priority feature to focus on high-priority tasks first.
+Use Notes for Ideas: Jot down quick ideas or reminders in notes to keep your tasks uncluttered.

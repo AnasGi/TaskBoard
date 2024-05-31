@@ -26,6 +26,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import Team from "./Team";
+import Error from "./Error";
 
 export default function Welcome() {
   const pros = [
@@ -136,7 +137,7 @@ export default function Welcome() {
                   x2="0"
                   y2="100"
                   stroke="black"
-                  stroke-width="1"
+                  strokeWidth="1"
                 />
               </svg>
               <SignInButton className="btn btn-dark" />
@@ -290,75 +291,81 @@ export default function Welcome() {
           <h1 className="fw-bold text-center" style={{ fontSize: "50px" }}>
             Our users experiences
           </h1>
-          <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={3}
-            centeredSlides={true}
-            loop={true}
-            className="p-3 w-75"
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
-            pagination={{ clickable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
-            {allRatings.length !== 0 ? (
-              allRatings !== "load" ? (
-                allRatings
-                  .filter((rating) => rating.score >= 3 && rating.score <= 5)
-                  .map((rate, i) => (
-                    <SwiperSlide
-                      key={i}
-                      className="reviewCard rounded p-3 pb-0 shadow"
-                      style={{height:"200px"}}
-                    >
-                      <div className="d-flex gap-2 align-items-center">
-                        <Avatar>{rate.fullName.split(" ")[0][0]}</Avatar>
-                        <div>
-                          <p className="m-0 fw-bold">{rate.fullName}</p>
-                          <p
-                            className="m-0 text-body-secondary"
-                            style={{ fontSize: "12px" }}
-                          >
-                            {new Date(rate.createdAt).toDateString()}
-                          </p>
+          {
+            allRatings[0].error === "Error" ?
+            <Error data="ratings" width="100%"/>
+            :
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={3}
+              centeredSlides={true}
+              loop={true}
+              className="p-3 w-75"
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+              }}
+              pagination={{ clickable: true }}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+              {
+              (allRatings.length !== 0 ? (
+                allRatings !== "load" ? (
+                  allRatings
+                    .filter((rating) => rating.score >= 3 && rating.score <= 5)
+                    .map((rate, i) => (
+                      <SwiperSlide
+                        key={i}
+                        className="reviewCard rounded p-3 pb-0 shadow"
+                        style={{height:"200px"}}
+                      >
+                        <div className="d-flex gap-2 align-items-center">
+                          <Avatar>{rate.fullName.split(" ")[0][0]}</Avatar>
+                          <div>
+                            <p className="m-0 fw-bold">{rate.fullName}</p>
+                            <p
+                              className="m-0 text-body-secondary"
+                              style={{ fontSize: "12px" }}
+                            >
+                              {new Date(rate.createdAt).toDateString()}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <hr />
-                      <div className="">
-                        <Rating
-                          readOnly
-                          name="simple-controlled"
-                          value={rate.score}
-                        />
-                      </div>
-                      <p>{rate.description}</p>
-                    </SwiperSlide>
-                  ))
+                        <hr />
+                        <div className="">
+                          <Rating
+                            readOnly
+                            name="simple-controlled"
+                            value={rate.score}
+                          />
+                        </div>
+                        <p>{rate.description}</p>
+                      </SwiperSlide>
+                    ))
+                ) : (
+                  <CircularProgress />
+                )
               ) : (
-                <CircularProgress />
-              )
-            ) : (
-              <p className="text-center w-100">No ratings or reviews yet</p>
-            )}
-          </Swiper>
+                <p className="text-center w-100">No ratings or reviews yet</p>
+              ))}
+            </Swiper>
+          }
         </aside>
 
         <section>

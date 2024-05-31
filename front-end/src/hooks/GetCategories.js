@@ -13,7 +13,7 @@ export default function GetCategories() {
         const fetchData = async ()=>{
             await axios.get("http://localhost:8000/api/categories")
             .then(res=>setAllCategs(res.data.categs))
-            .catch(err=>setAllCategs('error'))
+            .catch(err=>setAllCategs([{error : "Error"}]))
             setLoad(false)
           }
 

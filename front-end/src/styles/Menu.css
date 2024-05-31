@@ -27,7 +27,7 @@
 .menu {
   position: relative;
   border-radius: 30px;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(237, 236, 236);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -40,15 +40,15 @@
   color: black;
   left: 95%;
   cursor: pointer;
-  background-color: rgb(244, 244, 244);
+  background-color: white;
   padding: 5px;
   z-index: 1;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
   border-radius: 100%;
 }
 
 .showMoreMenu:hover{
-  background-color: beige;
+  background-color: rgb(219, 219, 219);
 }
 
 .username {
@@ -58,11 +58,6 @@
   font-size: 1rem;
   overflow: hidden;
 }
-
-/* .username {
-  text-transform: capitalize;
-  font-size: 1.1rem;
-} */
 
 .links , .ExpandedLinks {
   width: 100%;
@@ -99,14 +94,7 @@
 }
 
 .ExpandedLinks li:has(.active) , .ExpandedLinks li:hover {
-  background-color: rgb(79, 79, 79);
+  background-color: rgb(54, 54, 54);
   color: white;
-  border-radius: 30px;
-}
-
-.themeSwith{
-  background-color: rgb(225, 225, 225);
-  width: 70px;
-  padding: 5px 0px 5px 12px;
   border-radius: 30px;
 }

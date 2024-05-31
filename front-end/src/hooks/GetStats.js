@@ -14,7 +14,7 @@ export default function GetStats() {
         await axios
           .get(`http://localhost:8000/api/stats/${userId}`)
           .then((res) => setStats([res.data]))
-          .catch((error) => setStats("error fetching stats", error));
+          .catch((error) => setStats([{error : "Error"}]));
           setLoad(false)
       };
       fetchData();
