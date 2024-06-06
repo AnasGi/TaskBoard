@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth , UserButton } from "@clerk/clerk-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import TaskIcon from "@mui/icons-material/Task";
@@ -56,6 +56,11 @@ export default function ShortMenu() {
               <ContactSupportIcon />
             </div>
           </li>
+          <div className="pt-2 pb-2">
+              <div className="d-flex align-items-center gap-3 justify-content-center w-100">
+                <UserButton />
+              </div>
+            </div>
         </ul>
       </div>
     </div>

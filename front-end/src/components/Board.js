@@ -8,7 +8,7 @@ export default function Board({ nav }) {
   if (user) {
     return (
       <SignedIn>
-        <div className="d-flex w-100 justify-content-between h-100">
+        <div className="home d-flex w-100 justify-content-between h-100">
           <Menu />
           <Content nav={nav} />
         </div>

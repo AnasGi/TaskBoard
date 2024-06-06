@@ -233,7 +233,7 @@ export default function Tasks() {
                     style={{ margin: "7px 5px 7px 0px" }}
                     onMouseLeave={() => setStartEdit(false)}
                   >
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center taskCont">
                       <div
                         className="w-50 d-flex align-items-center"
                         onMouseOver={() => {
@@ -319,7 +319,7 @@ export default function Tasks() {
                           </div>
                         )}
                       </div>
-                      <div className="d-flex gap-2" style={{ width: "15%" }}>
+                      <div className="d-flex gap-2 flex-wrap" style={{ width: "15%" }}>
                         {task.isDone ? (
                           <span
                             className="btn btn-success fw-bold p-2 pt-1 pb-1 rounded"
@@ -345,7 +345,7 @@ export default function Tasks() {
                         )}
                       </div>
                       <div
-                        className="d-flex gap-2 text-body-secondary"
+                        className="d-flex gap-2 text-body-secondary taskDate"
                         style={{ fontSize: "14px", width: "15%" }}
                       >
                         <span>

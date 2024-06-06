@@ -53,7 +53,7 @@ export default function AddNotes() {
       open={ShowAddNoteForm}
     >
       <div className="d-flex justify-content-center align-items-center h-100 w-100">
-        <form className="bg-light p-4 rounded shadow" style={{width:"40%"}} onSubmit={handleAddNote}>
+        <form className="addForm bg-light p-4 rounded shadow" style={{width:"40%"}} onSubmit={handleAddNote}>
         <h2 className="fw-bold text-dark mb-5">Create New Note</h2>
           <div className="mt3 mb-3 m-0">
             <TextField

@@ -87,7 +87,7 @@ export default function Welcome() {
           <div className="container-fluid">
             <div className="d-flex gap-5">
               <a className="navbar-brand" href="/">
-                <img src={logo} alt="TaskBoard logo" title="TaskBoard" />
+                <img src={logo} alt="TaskBoard logo" title="TaskBoard" style={{mixBlendMode:"multiply"}} />
                 <span className="fw-bold" id="taskBoard">
                   TaskBoard
                 </span>
@@ -146,7 +146,7 @@ export default function Welcome() {
         </nav>
         <main className="text-center h-50 d-flex align-items-center justify-content-center">
           <section className="w-100">
-            <h1 className="fw-bold p-2 w-100" style={{ fontSize: "5vw" }}>
+            <h1 className="fw-bold p-2 w-100 siteTitle" style={{ fontSize: "5vw" }}>
               Write,plan,organize
             </h1>
             <div className="text-center p-2 d-flex justify-content-center">
@@ -163,7 +163,7 @@ export default function Welcome() {
             </div>
           </section>
         </main>
-        <article style={{ height: "500px" }}>
+        <article style={{ height: "400px" }}>
           <header>
             <div className="prosList d-flex justify-content-center gap-5">
               <div
@@ -204,7 +204,7 @@ export default function Welcome() {
           <aside className="w-100 mt-5 text-center">
             <h1 className="fw-bold">{pros[index].title}</h1>
             <div className="d-flex justify-content-center">
-              <p className="w-25 prosText" key={pros[index].title}>
+              <p className="w-25 prosText prosText" key={pros[index].title}>
                 {pros[index].text}
               </p>
             </div>
@@ -215,7 +215,7 @@ export default function Welcome() {
           <article className="text-center" id="previewText" key={indexImg}>
             <h1 className="fw-bold">{sitePreviewImgs[indexImg].title}</h1>
             <div className="d-flex justify-content-center">
-              <p className="text-body-secondary w-50">
+              <p className="text-body-secondary w-50 peekText">
                 {sitePreviewImgs[indexImg].text}
               </p>
             </div>
@@ -256,7 +256,7 @@ export default function Welcome() {
           </h1>
           <div className="d-flex justify-content-center h-100">
             <p
-              className="text-center w-50 lh-lg fw-lighter fst-italic"
+              className="text-center w-50 lh-lg fw-lighter fst-italic aboutText"
               style={{ fontSize: "17px" }}
             >
               TaskBoard is a versatile organizational app designed to streamline

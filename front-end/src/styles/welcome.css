@@ -230,3 +230,41 @@ ul.team-icon li a.linkedin {
         display: none;
     }
 }
+
+@media screen and (max-width : 700px) {
+    #taskBoard{
+        display: flex;
+    }
+
+    .siteTitle {
+        font-size: 30px !important;
+    }
+
+    .prosList.gap-5 {
+        gap: 10px !important;
+    }
+
+    .prosList>div {
+        width: 80px;
+        padding: 0 10px;
+    }
+    
+    .prosList>div>* {
+        width: 60px !important;
+        
+    }
+
+    .prosText.w-25 , .siteImgsWrapper img , .peekText , .aboutText {
+        width: 90% !important;
+    }
+
+    .HeaderLinks.d-flex {
+        display: none !important;
+    }
+
+    footer.m-5{
+        width: 100%;
+        margin: 20px 0 !important;
+        
+    }
+}

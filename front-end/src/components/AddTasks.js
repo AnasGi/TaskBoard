@@ -99,7 +99,7 @@ export default function AddTasks() {
           }}
           open={ShowAddTaskForm}
         >
-          <form onSubmit={handleSubmit} className=" bg-light p-4 rounded shadow" style={{width:"40%"}}>
+          <form onSubmit={handleSubmit} className="addForm bg-light p-4 rounded shadow" style={{width:"40%"}}>
             <h2 className="fw-bold text-dark mb-5">Create New task</h2>
               <div className="m-0 mt-3 mb-3">
                 <TextField

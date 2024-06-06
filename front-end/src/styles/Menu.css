@@ -98,3 +98,23 @@
   color: white;
   border-radius: 30px;
 }
+
+@media screen and (max-width : 1000px) {
+  .menu_container{
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .menu {
+    justify-content: center;
+    padding: 0px 7px;
+  }
+  .showMoreMenu {
+    display: none !important;
+  }
+  .menu ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+}

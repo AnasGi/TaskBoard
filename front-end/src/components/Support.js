@@ -68,7 +68,7 @@ const Support= () => {
             </div>
           </header>
   
-          <div className='d-flex gap-2'>
+          <div className='d-flex gap-2 supportCont'>
             <div style={{width:"100%"}}>
               <section id="faq">
                 <h2>FAQ</h2>

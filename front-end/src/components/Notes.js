@@ -148,7 +148,7 @@ export default function Notes() {
               })}
             </h1>
           </div>
-          <div className="d-flex align-items-center gap-5">
+          <div className="filterCont d-flex align-items-center gap-5">
             <div className="d-flex align-items-center gap-3 mt-2">
               <FilterAltIcon />
               <input

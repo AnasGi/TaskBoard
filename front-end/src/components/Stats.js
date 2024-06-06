@@ -116,7 +116,7 @@ export default function Stats() {
       >
         {stats.length > 0 ? (
           <div>
-            <div className="d-flex justify-content-center align-items-center mt-2 mb-5 gap-5">
+            <div className="statsCont d-flex justify-content-center align-items-center mt-2 mb-5 gap-5">
               <div className="d-flex gap-3 align-items-start mt-4 w-100">
                 <div
                   className="d-flex flex-column gap-3"
@@ -159,7 +159,7 @@ export default function Stats() {
                       No analytics yet
                     </p>
                   ) : (
-                    <div className="w-100 card shadow p-3">
+                    <div className="w-100 card shadow p-3 pieChartCont">
                       <div className="d-flex align-items-center">
                         <div className="">
                           <PieChart width={300} height={300}>
@@ -201,7 +201,7 @@ export default function Stats() {
                 </div>
 
                 <div className="d-flex flex-column gap-3">
-                  <div className="d-flex gap-3 align-items-center justify-content-between">
+                  <div className="d-flex gap-3 align-items-center justify-content-between CircularProgressbarContainerCont">
                     {tasks !== "load" &&
                     tasks.filter((task) => task.userId === userId).length <=
                       0 ? (
