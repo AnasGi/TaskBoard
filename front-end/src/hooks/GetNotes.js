@@ -11,7 +11,7 @@ export default function GetNotes() {
         const fetchData = async ()=>{
             await axios.get("http://localhost:8000/api/notes")
             .then(res=>setallNotes(res.data.notes))
-            .catch(err=>setallNotes([{error : "Error"}]))
+            .catch(err=>setallNotes([""]))
             setLoad(false)
           }
         fetchData()

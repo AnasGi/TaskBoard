@@ -16,15 +16,17 @@ export default function Content({ nav }) {
   const stats = GetStats();
   const categs = GetCategories();
 
+  // console.log(tasks[0].error)
+
   if (nav === "tasks") {
-    if (tasks[0].error === 'Error' || categs[0].error === "Error"){
+    if (tasks[0] === '' || categs[0] === ""){
       return <Error data="tasks"/>
     }
     else{
       return <Tasks />;
     }
   } else if (nav === "stats") {
-    if(stats[0].error === "Error" || tasks[0].error === 'Error' || categs[0].error === "Error" || notes[0].error === "Error"){
+    if(stats[0] === "" || tasks[0] === '' || categs[0] === "" || notes[0] === ""){
       return <Error data="statistics"/>
     }
     else{
@@ -32,7 +34,7 @@ export default function Content({ nav }) {
     }
   }
   else if (nav === "notes") {
-    if(notes[0].error === "Error"){
+    if(notes[0] === ""){
       return <Error data="notes"/>
     }
     else{
