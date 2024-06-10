@@ -26,7 +26,6 @@ import {
   Autoplay,
 } from "swiper/modules";
 import Team from "./Team";
-import Error from "./Error";
 
 export default function Welcome() {
   const pros = [
@@ -291,10 +290,6 @@ export default function Welcome() {
           <h1 className="fw-bold text-center" style={{ fontSize: "50px" }}>
             Our users experiences
           </h1>
-          {
-            allRatings[0].error === "Error" ?
-            <Error data="ratings" width="100%"/>
-            :
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
               spaceBetween={30}
@@ -365,7 +360,6 @@ export default function Welcome() {
                 <p className="text-center w-100">No ratings or reviews yet</p>
               ))}
             </Swiper>
-          }
         </aside>
 
         <section>
